@@ -10,7 +10,7 @@ var bio = {
     "twitter":"@Ramxxz",
     "location":"London, UK"
   },
-  "bioURL":"images/fry.jpg",
+  "bioURL":"images/Rameez-Portfolio.jpg",
   "welcomeMsg":"Welcome to my Resume ",
   "skills":["HTML","CSS","JS","JQuery"]
 };
