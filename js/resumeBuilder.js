@@ -74,7 +74,7 @@ var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
-var formattedPic = HTMLbioPic.replace("%data%","images/fry.jpg");
+var formattedPic = HTMLbioPic.replace("%data%","images/Rameez-Portfolio.jpg");
 $("#header").append(formattedPic);
 
 //Check if skills are included.
