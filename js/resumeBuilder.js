@@ -11,23 +11,36 @@ var bio = {
     "location":"London, UK"
   },
   "bioURL":"images/Rameez-Portfolio.jpg",
-  "welcomeMsg":"Welcome to my Resume ",
+  "welcomeMsg":"Welcome to my Online Resume",
   "skills":["HTML","CSS","JS","JQuery"]
 };
 
-//FormattedName and FormattedRole
+//Social contacts
+socialcontacts = [];
+socialcontacts.push(HTMLemail.replace("%data%", bio.contacts.email));
+socialcontacts.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+socialcontacts.push(HTMLgithub.replace("%data%", bio.contacts.github));
+socialcontacts.push(HTMLlocation.replace("%data%", bio.contacts.location));
+
+for (contact in socialcontacts){
+  $("#topContacts").append(socialcontacts[contact]);
+  $("#footerContacts").append(socialcontacts[contact]);
+};
+
+//formattedName, formattedRole, formattedPic and formattedMsg
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+var formattedPic = HTMLbioPic.replace("%data%","images/Rameez-Portfolio.jpg");
+var formattedMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-
-var formattedPic = HTMLbioPic.replace("%data%","images/Rameez-Portfolio.jpg");
 $("#header").append(formattedPic);
+$("#header").append(formattedMsg);
 
 //Check if skills are included.
 if(bio.skills.length > 0) {
   $("#header").append(HTMLskillsStart);
-
   for(skill in bio.skills){
     var formattedSkill = HTMLskills.replace("%data%",bio.skills[skill]);
     $("#skills").append(formattedSkill);
@@ -53,7 +66,8 @@ var work = {
       "title":"Industrial Engineer",
       "location":"Leeds,UK",
       "dates":"2015 - Current",
-      "description": "Project lead in digitising process within Schneider Electric Leeds Site. Currently qualified in Yellow Belt Lead Six Sigma and Prince2 Project Management Foundation."
+      "description": "Project lead in digitising process within Schneider Electric Leeds Site. Currently qualified in Yellow Belt Lead Six Sigma and Prince2 Project Management Foundation.",
+      "url":"http://www.schneider-electric.com/ww/en/"
     }
   ]
 };
@@ -62,7 +76,7 @@ work.display = function(){
   for (job in work.jobs){
     $("#workExperience").append(HTMLworkStart);
 
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("#",work.jobs[job].url);
     var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
     var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
@@ -128,13 +142,12 @@ education.display = function(){
       for (onlinecourse in education.onlineCourses){
         $("#education").append(HTMLschoolStart);
 
-        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlinecourse].title);
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlinecourse].title).replace("#",education.onlineCourses[onlinecourse].url);
         var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlinecourse].school);
         var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlinecourse].dates);
-        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlinecourse].url);
+        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlinecourse].url).replace("#",education.onlineCourses[onlinecourse].url);
 
-        $(".education-entry:last").append(formattedTitle);
-        $(".education-entry:last").append(formattedSchool);
+        $(".education-entry:last").append(formattedTitle + formattedSchool);
         $(".education-entry:last").append(formattedDates);
         $(".education-entry:last").append(formattedURL);
 
