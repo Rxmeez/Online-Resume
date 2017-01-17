@@ -15,6 +15,7 @@ var bio = {
   "skills":["HTML","CSS","JS","JQuery"]
 };
 
+bio.display = function(){
 //formattedName, formattedRole, formattedPic and formattedMsg
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
@@ -47,6 +48,7 @@ if(bio.skills.length > 0) {
   }
   };
 }
+};
 
 //Work Object and Function
 var work = {
